@@ -13,7 +13,8 @@ def test_calculate_bat_power():
 @pytest.mark.parametrize("distance, expected", [
     (5,50),
     (7.8,22),
-    (3,70)
+    (3,70),
+    (12,0)
 ])
 
 def test_signal_strength(distance, expected):
