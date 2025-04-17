@@ -3,6 +3,8 @@
 import pytest
 from bat_functions import calculate_bat_power, signal_strength
 
+""" Exercise 1 """
+
 def test_calculate_bat_power():
 
     """ Tests that bat power is correctly calculated with the given level"""
