@@ -1,7 +1,8 @@
 # test_bat_functions.py
 
 import pytest
-from bat_functions import calculate_bat_power, signal_strength, get_bat_vehicle
+from bat_functions import calculate_bat_power, signal_strength, get_bat_vehicle, fetch_joker_info
+import bat_functions
 
 
 """ Exercise 1 : Basic Tests and Parametrization """
@@ -54,6 +55,24 @@ def test_get_bat_vehicles(bat_vehicles):
 def test_unknown_bat_vehicles():
  
  """Tests that when an unknown vehicle is input-ed an error is thrown"""
- 
+
  with pytest.raises(ValueError, match=f"Unknown vehicle: Batship"): 
   get_bat_vehicle('Batship')
+
+
+
+"""Exercise 3: Mocking External Dependencies"""
+
+def fake_fetch_joker_info()-> dict:
+ """Creates a fake API response"""
+ return {
+  'mischief_level': 0, 'location': 'captured'
+ }
+
+def test_fetch_jocker_info(monkeypatch):
+ 
+ """Mocks a wrong API answer whether without having to wait for the entire execution time"""
+
+ monkeypatch.setattr(bat_functions, "fetch_joker_info", fake_fetch_joker_info)
+ result = bat_functions.fetch_joker_info()
+ assert result ==  {'mischief_level': 0, 'location': 'captured'}
