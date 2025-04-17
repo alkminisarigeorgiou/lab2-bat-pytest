@@ -24,8 +24,6 @@ def signal_strength(distance: float) -> float:
 
 
 
-
-
 def get_bat_vehicle(vehicle_name: str) -> dict:
     """
     Returns specifications of Batman's vehicles.
